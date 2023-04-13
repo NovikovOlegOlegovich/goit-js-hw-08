@@ -15,7 +15,7 @@ function onPlay(event) {
 }
 
 function setCurrentTime() {
-  if (!localStorage.getItem(key)) {
+  if (!localStorage.getItem(timeVideoKey)) {
     return;
   }
   player1.setCurrentTime(localStorage.getItem(key));
