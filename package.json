@@ -5,7 +5,7 @@
   "homepage": "git+https://github.com/NovikovOlegOlegovich/goit-js-hw-08",
   "scripts": {
     "start": "parcel src/*.html",
-    "build": "git+https://github.com/NovikovOlegOlegovich/goit-js-hw-08"
+    "build": "parcel build src/*.html --public-url /parcel-project-template/"
   },
   "repository": {
     "type": "git",
