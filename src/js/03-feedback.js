@@ -22,11 +22,14 @@ function setLocalstorage(event) {
 
 function onFormSubmit(event) {
   event.preventDefault();
-  console.log();
 
   const data = JSON.parse(localStorage.getItem(key));
-  console.log(data);
-
+  if (localStorage.getItem(key)) {
+    if (!data['email'] || !data['message']) {
+      return;
+    }
+    console.log(data);
+  }
   event.currentTarget.reset();
   localStorage.removeItem(key);
 }
@@ -35,11 +38,10 @@ function pageLoading() {
   const data = JSON.parse(localStorage.getItem(key));
 
   if (localStorage.getItem(key)) {
-    if (data.hasOwnProperty('email')) {
+    if (data['email']) {
       ref.emailEl.value = data['email'];
     }
-
-    if (data.hasOwnProperty('message')) {
+    if (data['message']) {
       ref.messageEl.value = data['message'];
     }
   }
