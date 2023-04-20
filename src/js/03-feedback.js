@@ -38,10 +38,8 @@ function pageLoading() {
   const data = JSON.parse(localStorage.getItem(key));
 
   if (localStorage.getItem(key)) {
-    if (data['email']) {
+    if (data['email'] || data['message']) {
       ref.emailEl.value = data['email'];
-    }
-    if (data['message']) {
       ref.messageEl.value = data['message'];
     }
   }
