@@ -25,10 +25,9 @@ function onFormSubmit(event) {
 
   const data = JSON.parse(localStorage.getItem(key));
   if (localStorage.getItem(key)) {
-    if (!data['email'] || !data['message']) {
+    if (!data.email || !data.message) {
       return;
     }
-    console.log(data);
   }
   event.currentTarget.reset();
   localStorage.removeItem(key);
@@ -37,10 +36,13 @@ function onFormSubmit(event) {
 function pageLoading() {
   const data = JSON.parse(localStorage.getItem(key));
 
-  if (localStorage.getItem(key)) {
-    if (data['email'] || data['message']) {
-      ref.emailEl.value = data['email'];
-      ref.messageEl.value = data['message'];
-    }
+  for (let key in data) {
+    data.key = data[key];
+  }
+  if (data.hasOwnProperty('email')) {
+    ref.emailEl.value = data.email;
+  }
+  if (data.hasOwnProperty('message')) {
+    ref.messageEl.value = data.message;
   }
 }
