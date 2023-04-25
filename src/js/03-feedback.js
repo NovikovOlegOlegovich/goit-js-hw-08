@@ -10,12 +10,13 @@ ref.formEl.addEventListener('input', _throttle(setLocalstorage, 1000));
 ref.formEl.addEventListener('submit', onFormSubmit);
 
 const key = 'feedback-form-state';
-const formData = {};
+const formData = JSON.parse(localStorage.getItem(key)) || {};
 
 pageLoading();
 
 function setLocalstorage(event) {
   formData[event.target.name] = event.target.value;
+  console.log(formData);
   const formDataJSON = JSON.stringify(formData);
   localStorage.setItem(key, formDataJSON);
 }
@@ -37,6 +38,9 @@ function pageLoading() {
   const data = JSON.parse(localStorage.getItem(key));
 
   for (let key in data) {
+    if (data.key) {
+      continue;
+    }
     data.key = data[key];
   }
   if (data.hasOwnProperty('email')) {
