@@ -1,4 +1,5 @@
 import _throttle from 'lodash.throttle';
+import Notiflix from 'notiflix';
 
 const ref = {
   formEl: document.querySelector('.feedback-form'),
@@ -27,7 +28,7 @@ function onFormSubmit(event) {
   const data = JSON.parse(localStorage.getItem(key));
   if (localStorage.getItem(key)) {
     if (!data.email || !data.message) {
-      return;
+      Notiflix.Notify.failure('fill all the fields');
     }
   }
   event.currentTarget.reset();
